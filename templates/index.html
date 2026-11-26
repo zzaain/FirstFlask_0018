@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Project Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>First Project Flask</h1>
+        <p class="subtitle">Parsing parameter menggunakan method POST</p>
+
+        <form action="{{ url_for('index') }}" method="POST" class="flask-form">
+            <div class="form-group">
+                <label for="teks">Masukkan Teks</label>
+                <input
+                    type="text"
+                    id="teks"
+                    name="teks"
+                    placeholder="Ketik teks di sini..."
+                    value="{{ hasil or '' }}"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn-submit">Kirim</button>
+        </form>
+
+        {% if hasil %}
+        <section class="result-box">
+            <label class="result-label">Hasil Input (POST):</label>
+            <p class="result-value">{{ hasil }}</p>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
